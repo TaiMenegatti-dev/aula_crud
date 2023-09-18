@@ -12,6 +12,7 @@ if ($result->num_rows > 0) {
                 <th>Nome:</th>
                 <th>Cpf</th>
                 <th>Convenio</th>
+                <th>Ações</th>
             </tr>";
     while ($row = $result->fetch_assoc()) {
         echo "<tr>

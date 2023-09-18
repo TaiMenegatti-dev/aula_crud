@@ -14,20 +14,20 @@
     <div class="content ">
         <h2>Cadastro de Produtos</h2>
         <form action="cadastrar.php" class="formulario" method="post">
-            <label for="nome_produto">Nome do Cliente:</label>
-            <input type="text" name="nome_produto" id="nome_produto" required>
+            <label for="nome_paciente">Nome do Cliente:</label>
+            <input type="text" name="nome_paciente" id="nome_produto" required>
 
             <label for="quantidade">CPF:</label>
-            <input type="number" name="quantidade" id="quantidade" required>
+            <input type="number" name="cpf_paciente" id="quantidade" required>
 
             <label for="valor">Convênio Médico:</label>
-            <input type="text" name="valor" id="valor" required>
+            <input type="text" name=" convenio_paciente" id="valor" required>
             <input type="HIDDEN" name="status" id="status" value="ativo" required>
 
             <button class="btn" type="submit">Cadastrar</button>
         </form>
 
-        <button class="btn-voltar" type="button"><a href="listar_produto.php">Lista de Pedidos</a></button>
+        <button class="btn-voltar" type="button"><a href="consultar.php">Lista de Pedidos</a></button>
 </body>
 
 </html>
