@@ -13,7 +13,7 @@
 <body>
     <div class="content ">
         <h2>Cadastro de Produtos</h2>
-        <form action="cadastro_produto.php" class="formulario" method="post">
+        <form action="cadastrar.php" class="formulario" method="post">
             <label for="nome_produto">Nome do Cliente:</label>
             <input type="text" name="nome_produto" id="nome_produto" required>
 
