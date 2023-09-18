@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style.css">
+<!--Pedro Lucas n°28-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
+    <link rel=stylesheet href="css/style.css">
 </head>
+
 <body>
-    <div class="content">
-        <h1>Cadastro de Pacientes</h1>
-        <form class="formulario" action="cadastrar.php" method="post">
+    <div class="content ">
+        <h2>Cadastro de Produtos</h2>
+        <form action="cadastro_produto.php" class="formulario" method="post">
+            <label for="nome_produto">Nome do Cliente:</label>
+            <input type="text" name="nome_produto" id="nome_produto" required>
 
-        <label for="id_paciente">Id:</label>
-        <input type="text" name="id_paciente" id="id_paciente" required>
+            <label for="quantidade">CPF:</label>
+            <input type="number" name="quantidade" id="quantidade" required>
 
-        <label for="nome_paciente">Nome:</label>
-        <input type="text" name="nome_paciente" id="nome_paciente" required>
-        
-        <label for="cpf_paciente">Cpf:</label>
-        <input type="number" name="cpf_paciente" id="cpf_paciente" required>
-        
-        <label for="convenio_paciente">Convenio:</label>
-        <input type="text" name="convenio_paciente" id="convenio_paciente" required>
-        
-        <input class="btn" type="submit" value="Cadastrar">
-    </form>
-    <button class="btn-voltar" type="button"><a href="consultar.php">Lista de Pacientes</a></button>
+            <label for="valor">Convênio Médico:</label>
+            <input type="text" name="valor" id="valor" required>
+            <input type="HIDDEN" name="status" id="status" value="ativo" required>
 
-    </div>
+            <button class="btn" type="submit">Cadastrar</button>
+        </form>
+
+        <button class="btn-voltar" type="button"><a href="listar_produto.php">Lista de Pedidos</a></button>
 </body>
+
 </html>
