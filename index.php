@@ -18,11 +18,10 @@
             <input type="text" name="nome_paciente" id="nome_produto" required>
 
             <label for="quantidade">CPF:</label>
-            <input type="number" name="cpf_paciente" id="quantidade" required>
+            <input type="number" name="cpf_paciente" id="cpf_paciente" required>
 
             <label for="valor">Convênio Médico:</label>
-            <input type="text" name=" convenio_paciente" id="valor" required>
-            <input type="HIDDEN" name="status" id="status" value="ativo" required>
+            <input type="text" name=" convenio_paciente" id="convenio_paciente" required>
 
             <button class="btn" type="submit">Cadastrar</button>
         </form>

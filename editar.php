@@ -1,18 +1,39 @@
 <?php
+include 'conexao.php';
+
+if (isset($_GET["id_paciente"])) {
+    $id_paciente = $_GET["id_paciente"];
+
+    $sql = "SELECT * FROM paciente WHERE id_paciente = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt-> bind_param("i", $id_paciente);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows == 1) {
+        $row = $resultado->fetch_assoc();
+    } else {
+        die ("Paciente não encontrado.");
+    }
+
+} else {
+    die ("Id do paciente não especificado");
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome_paciente = $_POST['nome_paciente'];
     $cpf_paciente = $_POST['cpf_paciente'];
     $convenio_paciente = $_POST['convenio_paciente'];
 
-    $sql = "UPDATE paciente SET nome_paciente = ?, idade_paciente = ?";
-    $stmt = $conexao->prepare($sql);
-    $stmt = bind_param("sii", $nome_paciente, $cpf_paciente, $convenio_paciente);
+    $sql = "UPDATE paciente SET nome_paciente = ?, cpf_paciente = ?, convenio_paciente = ? WHERE id_paciente = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt-> bind_param("siss", $nome_paciente, $cpf_paciente, $convenio_paciente, $id_paciente);
 
     if ($stmt->execute()) {
 
         header("Location: consultar.php");
     } else {
-        echo "Erro ao atualizar o paciente" . $conexao->error;
+        echo "Erro ao atualizar o paciente" . $mysqli->error;
     }
 
     $stmt->close();
@@ -29,18 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <h2>Editar Pacientes</h2>
-        <form action="consultar.php" class="formulario" method="post">
+        <form action="" class="formulario" method="post">
 
-        <input type="HIDDEN" name="id_pacientes" id="status" value="<?php echo $paciente ['id_paciente']; ?>" required>
+            <input type="hidden" name="id_paciente" id="id_paciente" value="<?php echo $row['id_paciente']; ?>" required>
 
             <label for="nome_paciente">Nome do Cliente:</label>
-            <input type="text" name="nome_paciente" id="nome_produto" value="<?php echo $paciente ['nome_paciente']; ?>" required>
+            <input type="text" name="nome_paciente" id="nome_paciente" value="<?php echo $row['nome_paciente']; ?>" required>
 
             <label for="cpf_paciente">CPF:</label>
-            <input type="number" name="cpf_paciente" id="quantidade" value="<?php echo $paciente ['cpf_paciente']; ?>" required>
+            <input type="number" name="cpf_paciente" id="cpf_paciente" value="<?php echo $row['cpf_paciente']; ?>" required>
 
             <label for="convenio_paciente">Convênio Médico:</label>
-            <input type="text" name="convenio_paciente" id="valor" required>
+            <input type="text" name="convenio_paciente" id="convenio_paciente" value="<?php echo $row['convenio_paciente']; ?>" required>
           
 
             <button class="btn" type="submit">Atualizar</button>
